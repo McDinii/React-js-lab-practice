@@ -1,0 +1,228 @@
+/*Импорт стилей*/
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, serif, sans-serif, 'Helvetica', Montserrat;
+    background-color: #e9e9e9;
+    height: 100%
+}
+
+.central-page{
+    max-width: 100%;
+    margin: 0 10%;
+}
+
+.content {
+    background: white;
+    min-height: calc(100% - 161px);
+    max-width: 80%;
+    height: auto;
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 0 50px;
+    padding-bottom: 80px;
+    overflow-x: hidden;
+    width: -webkit-fill-available;
+    width: -moz-available;
+}
+
+.content .section {
+    padding: 30px 20px 10px 20px;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    text-align: left;
+}
+
+.content .section-title {
+    font-size: 26px;
+    margin: 0;
+    text-align: center;
+    padding: 10px 5%;
+}
+
+.content .section-title-left {
+    font-size: 26px;
+    margin: 0;
+    text-align: left;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.content .stl {
+    font-size: 26px;
+    margin: 0;
+    text-align: left;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.content p {
+    text-align: left;
+    margin: 0;
+    padding: 10px 20px;
+}
+
+.content ul {
+    padding: 10px 20px;
+    padding-left: 40px;
+    margin: 0;
+}
+
+.content a {
+    color: black;
+    text-decoration-line: none;
+}
+
+.content p a, .content li a {
+    color: #0077aa;
+}
+
+.content p a:hover, .content li a:hover {
+    /*color: aqua;*/
+    text-decoration-line: underline;
+}
+
+/* .content li a:hover span {
+    color: #71ebff;
+} */
+
+.content img {
+    display: block;
+    margin: 0 auto;
+}
+
+.example {
+    background-color: #f9f9f9;
+    padding: 0 30px;
+    margin: 10px;
+    border: 2px solid #e4e4e4;
+}
+
+.warning {
+    background-color: #fffb8b;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+mark {
+    background: #e4e4e4;
+    border-radius: 5px;
+    padding: 3px;
+    font-family: monospace;
+    line-height: 1.5;
+    font-size: 20px;
+}
+
+.markJSX {
+    background: rgb(168, 233, 255);
+    max-width: 100%;
+    overflow-y: hidden;
+}
+/*Dop Mark*/
+.gatsby-code-text {
+    background: rgb(168, 233, 255);
+    max-width: 100%;
+    overflow-y: hidden;
+    border-radius: 5px;
+    font-family: monospace;
+    padding: 3px;
+    line-height: 1.5;
+}
+
+.button {
+    bottom: 0;
+    width: 1920px;
+    max-width: 100%;
+}
+
+.button a {
+    display: inline-block;
+    background: #505050;
+    padding: 8px 0;
+    color: white;
+    text-align: center;
+
+    min-width: 8%;
+    width: auto;
+    margin: 10px 0 10px 41.5%;
+
+    border-radius: 12px;
+}
+
+.button a:hover {
+    background: #71ebff;
+}
+
+.button a.next {
+    float: right;
+    margin-left: 0;
+    margin-right: 41.5%;
+}
+
+table {
+    margin: auto;
+    align-content: center;
+    width: 95%;
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 10px;
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+th {
+    background: #ececec;
+}
+
+.th {
+    width: 40%;
+}
+
+.content img{
+    max-width: 70%;
+}
+
+@media only screen and (max-width: 798px) {
+    .content {
+        margin: 0;
+        padding: 0;
+        padding-bottom: 80px;
+        max-width: 100%;
+        overflow-y: hidden;
+    }
+
+    .warning {
+        border-radius: 0;
+    }
+
+    pre[class*="language-"] {
+        border-radius: 0 !important;
+    }
+    .content .section, .content .section-title {
+        text-indent: 0;
+    }
+
+    .lr-list {
+        padding-right: 20px;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+    .content img {
+        max-width: 90% !important;
+    }
+    .central-page {
+        width: 100%;
+        margin: 0 0;
+        display: inline-block;
+    }
+}

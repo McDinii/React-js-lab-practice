@@ -1,0 +1,41 @@
+.chapter {
+	display: none;
+	font-family: Montserrat;
+	overflow: auto;
+	position: absolute;
+	width: 76.4vw;
+	left: 11vw;
+	max-height: 77vh;
+	top: 15vh;
+}
+
+.chapter hr {
+	border-color: white;
+	margin-bottom: 0;
+}
+
+.chapter h1,p {
+	padding-left: 20px;
+}
+
+.chapter h1 {
+	color: white;
+}
+
+.chapter p {
+	transition: 1s;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	font-size: 20px;
+	background-color: rgba(97, 219, 251, 1);
+}
+
+.chapter p:hover {
+	transition: 0.3s;
+	background: none;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}

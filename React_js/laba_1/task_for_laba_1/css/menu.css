@@ -1,0 +1,123 @@
+:root {
+    /*Yheme color*/
+    --th-color: rgba(97, 219, 251, 1);
+    /*scrollbar-thumb-hover*/
+    --scr-th-color: rgb(0, 152, 190);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+mark {
+    background-color: var(--th-color);
+}
+
+#main #name {
+    position: absolute;
+    left: 15%;
+    font-size: 32px;
+    color: white;
+    font-family: Arial, serif, sans-serif, 'Helvetica', Montserrat;
+}
+
+#main #menu {
+    position: absolute;
+    width: 80vw;
+    left: 10vw;
+    overflow: auto;
+    max-height: 85vh;
+    top: 70px;
+}
+
+#main #menu .element {
+    transition: 0.3s;
+    position: relative;
+    float: left;
+    margin: 20px;
+    height: 365px;
+    width: 450px;
+    outline: 10px solid var(--th-color);
+    background-color: var(--th-color);
+    opacity: 0.1;
+}
+
+#main #menu .element img {
+    margin-left: 125px;
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.2;
+    transition: 0.5s;
+}
+
+#main #menu .element:hover img {
+    margin-left: 125px;
+    margin-top: 40px;
+    opacity: 1;
+    transition: 0.2s;
+}
+
+#main #menu .element p {
+    visibility: hidden;
+}
+
+#main #menu .element:hover p {
+    visibility: visible;
+    font-family: Montserrat;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    transition: 0.1s;
+}
+
+#main #menu .element:hover {
+    transition: 0.3s;
+    background-color: var(--th-color);
+    outline: none;
+    opacity: 1;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 798px) {
+    #main #name{
+        font-size: 24px;
+    }
+}
+
+/* tools */
+canvas {
+    position: fixed;
+    z-index: -100;
+    filter: blur(3px);
+}
+
+#blackscreen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.5;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+    height: 8px;
+    background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--th-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scr-th-color);
+}
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+    background: linear-gradient(120deg, black 40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(240deg, black 40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(0deg, black 30%, rgba(0, 0, 0, 0) 31%);
+    background-color: var(--scr-th-color);
+}

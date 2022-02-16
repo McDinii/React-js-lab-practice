@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЛАБОРАТОРНЫЕ РАБОТЫ &#124; REACT.JS</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="css/general.css">
+    <!--React.js-->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        <script src="../../libraries/prism.js"></script>
+    <!--jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../../libraries/header.js"></script>
+</head>
+
+<body>
+    <section class="nav-bar">
+        <div class="nav-container">
+            <div class="brand">
+                <a href="index.html"><img src="../../images/react-logo.png">Лабораторные работы</a>
+            </div>
+            <nav>
+                <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+                <ul class="nav-list">
+
+                    <li>
+                        <a href="../../index.html">Главная</a>
+                    </li>
+                    <li>
+                        <a href="../../labs.html">Лабораторные работы</a>
+                    </li>
+                    <li>
+                        <a href="../../theory.html">Теория</a>
+                    </li>
+                    <li>
+                        <a href="../../info.html">Справочник</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <div class="general">
+
+    <div class="content">
+    <p class="section">Лабораторная работа №1</p>
+        <p class="lr-info">Темы: <a target="_blank" href="../../examples/quick-start/hello-world/index.html">Hello,
+            world!</a>, <a target="_blank" href="../../examples/quick-start/introducing-jsx/index.html">Введение в
+            JSX</a>, <a target="_blank" href="../../examples/quick-start/rendering-elements/index.html">Создание элементов</a><br>
+        Время выполнения: 2 часа</p>
+        <p>В первых лабораторных работах для разработки можно использовать любой текстовый редактор. В дальнейшем вам будет необходимо перейти на <a href="../../info/create_react_app/index.html" target="_blank">шаблон create-react-app</a>. Рассмотрите возможность сделать это сейчас для получения лучшего опыта.</p>
+
+        <p class="section">Задание 1</p>
+        
+        <p>Выберите и, при необходимости, установите рабочее окружение для разработки с React.</p>
+        
+        <p>Для быстрого старта можно использовать следующий шаблон:</p>
+
+        <pre class="line-numbers"><code class="language-jsx">
+        &lt;!DOCTYPE html>
+        &lt;html>
+        &lt;head>
+            &lt;meta charset="UTF-8" />
+            &lt;title>Hello World&lt;/title>
+            &lt;script src="https://unpkg.com/react@17/umd/react.production.min.js">&lt;/script>
+            &lt;script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js">&lt;/script>
+            &lt;script src="https://unpkg.com/@babel/standalone/babel.min.js">&lt;/script>
+        &lt;/head>
+        &lt;body>
+            &lt;div id="root">&lt;/div>
+            &lt;script type="text/babel">
+                ReactDOM.render(
+                    &lt;h1>Hello, world!&lt;/h1>,
+                    document.getElementById('root')
+                );
+            &lt;/script>
+        &lt;/body>
+        &lt;/html>
+        </code></pre>
+
+        <p>Скопируйте его и убедитесь, что при открытии страницы в браузере появляется надпись "Hello, world!"</p>
+
+        <p>Измените код в файле так, чтобы при открытии страницы отображалась сегодняшняя дата.</p>
+
+        <div class="section">Задание 2</div>
+
+        <p>В ответ на запрос сервер фондовой биржи вернул следующий объект, содержащий названия акций, их текущую цену и изменение цены:</p>
+
+        <pre class="line-numbers"><code class="language-jsx">
+            [{
+                stock_name: "EFX",
+                company_name: "Equifax Inc",
+                price: 163.55,
+                currency: "USD",
+                change: "+9.03"
+            }, {
+                stock_name: "IRM",
+                company_name: "Iron Mountain Inc",
+                price: 33.21,
+                currency: "USD",
+                change: "+1.42"
+            }, {
+                stock_name: "NTAP",
+                company_name: "NetApp Inc",
+                price: 54.81,
+                currency: "USD",
+                change: "-6.01"
+            }, {
+                stock_name: "CTL",
+                company_name: "Centurylink Inc",
+                price: 13.79,
+                currency: "USD",
+                change: "-1.37"
+            }]
+        </code></pre>
+
+        <p>Динамически сгенерируйте и выведите на его основании таблицу с условным форматированием: положительное изменение цены акций должно быть окрашено в зелёный цвет, а отрицательное — в красный. Используйте циклы.</p>
+        
+        <!-- TODO: добавить скриншот, как должна выглядеть таблица -->
+
+        <div class="section">Задание 3</div>
+
+        <p>Разработать проект шахматной доски по примеру, приведённому ниже, с использованием дочерних элементов JSX. Допускается использование стилей только для изменения цвета клеток (.black, .white) и для общего контейнера всей доски.</p>
+
+        <img class="lr-img" src="img/Chess.jpg" alt="Шахматная доска">
+
+        <p>Добавьте нотации (подписи) шахматной доски, используя отдельные элементы.</p>
+
+        <p>Доп. задание: Реализуйте нотации с использованием циклов и отдельных функций.</p>
+        </div>
+<div class="site-nav">
+    <div class="site-nav-scroll">
+        <ul class="site-nav-list">
+            <p class="site-nav-name">Раздел 1. Установка и введение в React</p>
+            <li><a href="index.html">Лабораторная работа №1</a></li>
+            <li><a href="../lab02/index.html">Лабораторная работа №2</a></li>
+            <li><a href="../lab03/index.html">Лабораторная работа №3</a></li>
+            <li><a href="../lab04/index.html">Лабораторная работа №4</a></li>
+            <li><a href="../lab05/index.html">Лабораторная работа №5</a></li>
+            <p class="site-nav-name">Раздел 2. Основы React</p>
+            <li><a href="../lab06/index.html">Лабораторная работа №6</a></li>
+            <li><a href="../lab07/index.html">Лабораторная работа №7</a></li>
+            <li><a href="../lab08/index.html">Лабораторная работа №8</a></li>
+            <li><a href="../lab09/index.html">Лабораторная работа №9</a></li>
+            <li><a href="../lab10/index.html">Лабораторная работа №10</a></li>
+            <p class="site-nav-name">Раздел 3. Redux.js</p>
+            <li><a href="../lab11/index.html">Лабораторная работа №11</a></li>
+            <li><a href="../lab12/index.html">Лабораторная работа №12</a></li>
+            <li><a href="../lab13/index.html">Лабораторная работа №13</a></li>
+            <li><a href="../lab14/index.html">Лабораторная работа №14</a></li>
+            <li><a href="../lab15/index.html">Лабораторная работа №15</a></li>
+
+        </ul>
+        <script type="text/babel" src="../../libraries/navigator.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.site-nav-list a[href="index.html"]').parent().toggleClass('site-nav-list-active');
+            });
+            function handleResize() {
+                if ($(document.body).width() < 799) {
+                    $('.site-nav-scroll')
+                    .css('height', $('.site-nav-list').height() + 40)
+                    .css('overflow-y', 'hidden');
+                } else {
+                    $('.site-nav-scroll').css('height', '');
+                    $('.site-nav-scroll').height($('.content').height());
+                    if ($('.site-nav-list').outerHeight() > $('.site-nav-scroll').innerHeight()) {
+                        $('.site-nav-scroll').css('overflow-y', 'scroll');
+                    } else {
+                        $('.site-nav-scroll').css('overflow-y', 'hidden');
+                    }
+                }
+            }
+            $(function() {
+                document.body.onresize = handleResize;
+                handleResize();
+            });
+        </script>
+    </div>
+    </div>
+</div>
+    </div>
+
+</body>
+
+</html>

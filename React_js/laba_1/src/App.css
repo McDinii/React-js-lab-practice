@@ -1,0 +1,56 @@
+body {
+    background: #2d1a2b
+}
+
+h1, h2, h3 {
+    color: #b8bd40;
+    text-align: center;
+    margin: auto auto 7% auto;
+}
+
+
+.Tabl {
+    margin: auto auto 7% auto;
+}
+.Side {
+    display: inline-block;
+    font-size: 35px;
+}
+.Side div{
+    color: #b8bd40;
+    margin-bottom: 13px;
+}
+#d{margin-top: -23px}
+.Head {
+    font-size: 35px;
+}
+.CharHead {
+    margin-right: 35px;
+    display: inline-block;
+    color: #b8bd40;
+}
+
+.main {
+    display: inline-block;
+    font-size: 0;
+    width: 400px;
+    margin: 0 10px;
+}
+.White {
+    display: inline-block;
+    background-color: #a0a8a2;
+    height: 50px;
+    width: 50px;
+}
+.Green {
+    height: 50px;
+    width: 50px;
+    background-color: #338a46;
+    display: inline-block;
+
+}
+.main0 {
+    text-align: center;
+    margin-bottom: 100px;
+}
+

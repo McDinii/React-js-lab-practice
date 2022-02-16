@@ -1,0 +1,22 @@
+/*Подключение всех стилей через ключевой файл*/
+/*Все необходимые стили импортировать через данный файл!*/
+
+/*-----ГЛАВНЫЕ СТИЛИ-----*/
+/*Стили для доп. элементов */
+@import url("theme.css");
+/*Стили для содержания страниц*/
+@import url("content.css");
+/*Стили для главного меню всех страниц*/
+@import url("header.css");
+@import url("navigator.css");
+@import url("fonts.css");
+
+
+
+/*-----ДОПОЛНИТЕЛЬНЫЕ СТИЛИ-----*/
+/*Стили для фона главной страницы*/
+/*@import url("../libraries/background/style.css");*/
+/*Стили иконочных шрифтов Font Awesome*/
+@import url("../libraries/font-awesome/css/font-awesome.css");
+/*Стили для демо-кодов*/
+@import url("../libraries/prism.css");
