@@ -14,15 +14,15 @@ h1, h2, h3 {
 }
 .Side {
     display: inline-block;
-    font-size: 35px;
+    font-size: 34px;
 }
 .Side div{
     color: #b8bd40;
-    margin-bottom: 13px;
+    margin-bottom: 12px;
 }
 #d{margin-top: -23px}
 .Head {
-    font-size: 35px;
+    font-size: 34px;
 }
 .CharHead {
     margin-right: 35px;

@@ -9,8 +9,6 @@ const Board = () => {
                         array[i][j] = <div className="Green"> </div>
                     else array[i][j] = <div className="White"> </div>
             }
-
-
         }
 
 

@@ -36,24 +36,24 @@ const Task_1 = () => {
     const trGreenStyle = {background: 'green'}
 
     let max = list.length
-            const getStockContent = list => {
-                let content = []
-                for (let i = 0; i < max; i++) {
-                    const item = list[i]
-                    if (parseInt(item.change) < 0) {
-                        content.push( <tr style={trRedStyle}>
-                            <td>{item.stock_name}</td>
-                            <td>{item.company_name}</td>
-                            <td>{item.change}</td>
-                        </tr>)
-                    }
-                    else{
-                        content.push( <tr style={trGreenStyle}>
-                            <td >{item.stock_name}</td>
-                            <td>{item.company_name}</td>
-                           <td>{item.change}</td>
+    const getStockContent = list => {
+        let content = []
+        for (let i = 0; i < max; i++) {
+            const item = list[i]
+            if (parseInt(item.change) < 0) {
+                content.push( <tr style={trRedStyle}>
+                    <td>{item.stock_name}</td>
+                    <td>{item.company_name}</td>
+                    <td>{item.change}</td>
+                </tr>)
+            }
+            else{
+                content.push( <tr style={trGreenStyle}>
+                    <td >{item.stock_name}</td>
+                    <td>{item.company_name}</td>
+                    <td>{item.change}</td>
 
-                        </tr>)
+                </tr>)
             }
         }
         return content
