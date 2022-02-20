@@ -110,16 +110,12 @@ const Task_1 = () => {
                 this.state.date.setHours(hours)
                 clock = this.state.date.toLocaleTimeString()
 
-                let checkAmPm = check + 12
-                if (checkAmPm > 12) {
+                let checkAmPm = check-12
+                if (checkAmPm > 0) {
                     console.log( this.state.date.getHours() + 12 )
                     clock += " pm"
-                } else if (checkAmPm < 12) {
+                } else {
                     clock += " am"
-                }else if (checkAmPm === 12 && sign>0) {
-                    clock += " pm"
-                }else if (checkAmPm === 12 && sign>0) {
-                    clock += " pm"
                 }
             } else clock = this.state.date.toLocaleTimeString()
 
