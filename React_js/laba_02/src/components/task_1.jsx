@@ -5,34 +5,48 @@ const Task_1 = () => {
     class Panel extends React.Component {
         constructor(props) {
             super( props );
-            this.state = {value: '24'};
-            this.state = {value1:'+3:00'}
+            this.state = {format: '24', UTC: '+3:00'};//default
             this.handleChange = this.handleChange.bind( this );
             this.handleSubmit = this.handleSubmit.bind( this );
         }
+
         handleChange(event) {
-            this.setState({value: event.target.value});
+             const value = event.target.value;
+             const name = event.target.name;
+            this.setState( {
+                [name]: value
+            } );
         }
+
         handleSubmit(event) {
             event.preventDefault();
         }
-        render() {
-            return (<div><form onSubmit={this.handleSubmit}>
-                <p>
-                    Выберите формат времени:
-                    <select value={this.state.value} onChange={this.handleChange}>
-                        <option value="12">12</option>
-                        <option value="24">24</option>
-                    </select>
-                </p>
-                <p>
-                    Выберите формат времени(в формате (+/-)xxx):
 
-                        <input type="text" required placeholder={this.state.value1} onChange={this.handleChange} name="UTC"/>
-                </p>
-                <input type="submit" value="Sent"/>
-            </form>
-            <Clock name={this.state.value}/></div>);
+        render() {
+            return (<div>
+                <form  onSubmit={this.handleSubmit} >
+                    <label>
+                    <p>
+                        Выберите формат времени:
+                        <select  name ="format"  value={this.state.format} onChange={this.handleChange}>
+                            <option value="12">12</option>
+                            <option value="24">24</option>
+
+                        </select>
+
+                    </p>
+                    </label>
+                    <label>
+                    <p>
+                        Выберите формат времени(в формате (+/-)xxx):
+                        <input type="text" name="UTC"  required placeholder={this.state.UTC}
+                         onChange={this.handleChange} />
+
+                    </p>
+                    </label>
+                </form>
+                <Clock format={this.state.format} UTC={this.state.UTC}/>
+            </div>);
         }
     }
 
@@ -41,6 +55,7 @@ const Task_1 = () => {
         constructor(props) {
             super( props );
             this.state = {date: new Date()};
+
         }
 
         componentDidMount() {
@@ -61,25 +76,59 @@ const Task_1 = () => {
         }
 
         render() {
-            let UTC = parseInt( '1' ) * 3600
-            let user_info = this.props.name
-            console.log(user_info)
-            const now = (parseInt( this.state.date.get ) + parseInt( this.state.date.getUTCHours() ) * 3600 + parseInt( this.state.date.getUTCMinutes() ) * 60 + parseInt( this.state.date.getUTCSeconds() ))
-            const user = new Date( now + UTC )
-            /*const user_time = UTC*/
+            let containerH = ''
+            let containerMin = '', k = 0, sign
+            let UTC = this.props.UTC
+            //цикл опр пояса
+            for (let i of UTC) {
+                if (i === ":") {
+                    containerMin += UTC[k + 1] + UTC[k + 2]
+                    break
+                } else if (i === '+' || i === '-')
+                    sign = i + '1'
+                else {
+                    containerH += i
+                }
+                k++
+
+            }
+            //сколько нужно прибавить к текущей дате
+            let newUTC = +sign * (+containerMin *60000 + +containerH * 3600*1000)
+            let format = parseInt( this.props.format )
+
+
+
+             //user date
+
+            let time = Date.now(),clock
+            //отнимает текущий пояс
+
+             const user = time + newUTC - 3600*1000*3
+            this.state.date.setTime(user)
+            let check = this.state.date.getHours()
+            if (format === 12){
+            let hours = check>=12 ? this.state.date.setHours(check-12) : this.state.date
+
+                clock = this.state.date.toLocaleTimeString()
+                console.log(clock)
+                console.log( this.state.date.getHours()+12)
+            if ((this.state.date.getHours+12)>12){
+                clock+=" pm"}
+            else if (this.state.date.getHours+12<12){
+                clock+=" am"}
+            }
+            else clock =this.state.date.toLocaleTimeString()
             return (
                 <div>
-                    <h1>Задание 1 </h1>
-                    <h2>Сегодня({this.state.date.toLocaleDateString()})
-                        Сейчас {this.state.date.toLocaleTimeString()}</h2>
-                    {user.toLocaleString()}
+                    <h2>
+                        Сейчас в вашем
+                        регионе {clock}</h2>
                 </div>
-
             );
         }
     }
 
-    return <div><Panel/><Clock/></div>
+    return <div><Panel/></div>
 
 }
 
