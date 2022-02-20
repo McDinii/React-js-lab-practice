@@ -11,8 +11,8 @@ const Task_1 = () => {
         }
 
         handleChange(event) {
-             const value = event.target.value;
-             const name = event.target.name;
+            const value = event.target.value;
+            const name = event.target.name;
             this.setState( {
                 [name]: value
             } );
@@ -24,25 +24,25 @@ const Task_1 = () => {
 
         render() {
             return (<div>
-                <form  onSubmit={this.handleSubmit} >
+                <form onSubmit={this.handleSubmit}>
                     <label>
-                    <p>
-                        Выберите формат времени:
-                        <select  name ="format"  value={this.state.format} onChange={this.handleChange}>
-                            <option value="12">12</option>
-                            <option value="24">24</option>
+                        <p>
+                            Выберите формат времени:
+                            <select name="format" value={this.state.format} onChange={this.handleChange}>
+                                <option value="12">12</option>
+                                <option value="24">24</option>
 
-                        </select>
+                            </select>
 
-                    </p>
+                        </p>
                     </label>
                     <label>
-                    <p>
-                        Выберите формат времени(в формате (+/-)xxx):
-                        <input type="text" name="UTC"  required placeholder={this.state.UTC}
-                         onChange={this.handleChange} />
+                        <p>
+                            Выберите формат времени(в формате (+/-)xxx):
+                            <input type="text" name="UTC" required placeholder={this.state.UTC}
+                                   onChange={this.handleChange}/>
 
-                    </p>
+                        </p>
                     </label>
                 </form>
                 <Clock format={this.state.format} UTC={this.state.UTC}/>
@@ -93,31 +93,36 @@ const Task_1 = () => {
 
             }
             //сколько нужно прибавить к текущей дате
-            let newUTC = +sign * (+containerMin *60000 + +containerH * 3600*1000)
+            let newUTC = +sign * (+containerMin * 60000 + +containerH * 3600 * 1000)
             let format = parseInt( this.props.format )
 
 
+            //user date
 
-             //user date
-
-            let time = Date.now(),clock
+            let time = Date.now(), clock
             //отнимает текущий пояс
 
-             const user = time + newUTC - 3600*1000*3
-            this.state.date.setTime(user)
+            const user = time + newUTC - 3600 * 1000 * 3
+            this.state.date.setTime( user )
             let check = this.state.date.getHours()
-            if (format === 12){
-            let hours = check>=12 ? this.state.date.setHours(check-12) : this.state.date
-
+            if (format === 12) {
+                let hours = check > 12 ? check-12 : check
+                this.state.date.setHours(hours)
                 clock = this.state.date.toLocaleTimeString()
-                console.log(clock)
-                console.log( this.state.date.getHours()+12)
-            if ((this.state.date.getHours+12)>12){
-                clock+=" pm"}
-            else if (this.state.date.getHours+12<12){
-                clock+=" am"}
-            }
-            else clock =this.state.date.toLocaleTimeString()
+
+                let checkAmPm = check + 12
+                if (checkAmPm > 12) {
+                    console.log( this.state.date.getHours() + 12 )
+                    clock += " pm"
+                } else if (checkAmPm < 12) {
+                    clock += " am"
+                }else if (checkAmPm === 12 && sign>0) {
+                    clock += " pm"
+                }else if (checkAmPm === 12 && sign>0) {
+                    clock += " pm"
+                }
+            } else clock = this.state.date.toLocaleTimeString()
+
             return (
                 <div>
                     <h2>
