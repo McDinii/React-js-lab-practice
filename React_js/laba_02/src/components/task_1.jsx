@@ -23,27 +23,27 @@ const Task_1 = () => {
         }
 
         render() {
-            return (<div>
+            return (<div className="Form">
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         <p>
-                            Выберите формат времени:
+                            <span>Выберите формат времени:</span>
                             <select name="format" value={this.state.format} onChange={this.handleChange}>
                                 <option value="12">12</option>
                                 <option value="24">24</option>
 
                             </select>
-
                         </p>
                     </label>
                     <label>
                         <p>
-                            Выберите формат времени(в формате (+/-)xxx):
+                           <span> Выберите часовой пояс ((+/-)xxx):</span>
                             <input type="text" name="UTC" required placeholder={this.state.UTC}
                                    onChange={this.handleChange}/>
 
                         </p>
                     </label>
+
                 </form>
                 <Clock format={this.state.format} UTC={this.state.UTC}/>
             </div>);
@@ -79,7 +79,7 @@ const Task_1 = () => {
             let containerH = ''
             let containerMin = '', k = 0, sign
             let UTC = this.props.UTC
-            //цикл опр пояса
+            //цикл парсинга  пояса
             for (let i of UTC) {
                 if (i === ":") {
                     containerMin += UTC[k + 1] + UTC[k + 2]
@@ -94,17 +94,16 @@ const Task_1 = () => {
             }
             //сколько нужно прибавить к текущей дате
             let newUTC = +sign * (+containerMin * 60000 + +containerH * 3600 * 1000)
+            //формат имени
             let format = parseInt( this.props.format )
-
-
-            //user date
-
+            // текущее время в UTC-0 в миллисекундах от 1 янв 1970 г
             let time = Date.now(), clock
-            //отнимает текущий пояс
-
+            //прибавляет  пользовательский пояс и отнимает пояс устройства-текущий пояс
             const user = time + newUTC - 3600 * 1000 * 3
+            // Устанавливаем время относительно ввода пользователя
             this.state.date.setTime( user )
             let check = this.state.date.getHours()
+            //проверка формата
             if (format === 12) {
                 let hours = check > 12 ? check-12 : check
                 this.state.date.setHours(hours)
@@ -121,9 +120,9 @@ const Task_1 = () => {
 
             return (
                 <div>
-                    <h2>
+                    <h2 className="clock">
                         Сейчас в вашем
-                        регионе {clock}</h2>
+                        регионе: {clock}</h2>
                 </div>
             );
         }

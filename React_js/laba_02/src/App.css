@@ -1,4 +1,41 @@
-div{
+.Form{
+    margin: 5% auto auto auto ;
+    border: 3px violet solid;
+    width: 45%;
+    text-align: center;
+    background: #0c5460;
+    border-radius: 14px;
+}
+div form{
     display: block;
     margin: auto;
+    color:#0c5460;
+    border: 3px violet solid;
+    border-radius: 10px;
+
 }
+label input,select{
+    margin-top:2% ;
+    width: 20%;
+    min-width: 30px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+div .clock{
+    color:yellow;
+}
+label p span{
+    display: block;
+    width: 70%;
+    min-height: 20px;
+    font-size: 20px;
+    background: #e0da10;
+    margin: auto;
+    border-radius: 10px;
+}
+input, select{
+    background: #990055;
+    color: wheat;
+}
+input::-webkit-input-placeholder { color: rgba(245, 222, 179, 0.53); }
