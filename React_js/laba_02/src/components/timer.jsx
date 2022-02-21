@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Task_1 = () => {
+const Timer = () => {
 
     class Panel extends React.Component {
         constructor(props) {
@@ -132,4 +132,4 @@ const Task_1 = () => {
 
 }
 
-export default Task_1;
+export default Timer;

@@ -37,5 +37,6 @@ label p span{
 input, select{
     background: #990055;
     color: wheat;
+    border: 2px gray ridge;
 }
 input::-webkit-input-placeholder { color: rgba(245, 222, 179, 0.53); }

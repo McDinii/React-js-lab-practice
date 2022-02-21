@@ -1,10 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import Task_1 from "./components/task_1";
-
+import Timer from "./components/timer";
+import Jobs from "./components/jobs"
 function App() {
     return (
-       <Task_1/>
+        <div>
+       <Timer/>
+        <Jobs/>
+        </div>
     );
 }
 
