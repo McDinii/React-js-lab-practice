@@ -4,9 +4,9 @@ import Timer from "./components/timer";
 import Jobs from "./components/jobs"
 function App() {
     return (
-        <div>
-       <Timer/>
-        <Jobs/>
+        <div >
+       <Timer />
+        <Jobs />
         </div>
     );
 }

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "babel-plugin-transform-react-statements": "^0.7.3"
+  }
+}

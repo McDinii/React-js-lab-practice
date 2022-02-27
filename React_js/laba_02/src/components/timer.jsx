@@ -23,13 +23,13 @@ const Timer = () => {
         }
 
         render() {
-            return (<div className="Form">
+            return (<div className="Form timer">
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         <p>
                             <span>Выберите формат времени:</span>
                             <select name="format" value={this.state.format} onChange={this.handleChange}>
-                                <option value="12">12</option>
+                                <option  value="12">12</option>
                                 <option value="24">24</option>
 
                             </select>
@@ -45,7 +45,7 @@ const Timer = () => {
                     </label>
 
                 </form>
-                <Clock format={this.state.format} UTC={this.state.UTC}/>
+                <Clock format ={this.state.format} UTC={this.state.UTC}/>
             </div>);
         }
     }
@@ -111,7 +111,6 @@ const Timer = () => {
 
                 let checkAmPm = check-12
                 if (checkAmPm > 0) {
-                    console.log( this.state.date.getHours() + 12 )
                     clock += " pm"
                 } else {
                     clock += " am"
@@ -119,8 +118,8 @@ const Timer = () => {
             } else clock = this.state.date.toLocaleTimeString()
 
             return (
-                <div>
-                    <h2 className="clock">
+                <div className="clock">
+                    <h2 >
                         Сейчас в вашем
                         регионе: {clock}</h2>
                 </div>

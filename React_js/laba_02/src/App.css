@@ -4,9 +4,9 @@
     width: 45%;
     text-align: center;
     background: #0c5460;
-    border-radius: 14px;
+    border-radius: 13px;
 }
-div form{
+.Form form{
     display: block;
     margin: auto;
     color:#0c5460;
@@ -14,7 +14,7 @@ div form{
     border-radius: 10px;
 
 }
-label input,select{
+.Form label input,select{
     margin-top:2% ;
     width: 20%;
     min-width: 30px;
@@ -22,10 +22,10 @@ label input,select{
     font-size: 20px;
     text-align: center;
 }
-div .clock{
+.clock{
     color:yellow;
 }
-label p span{
+.Form label p span{
     display: block;
     width: 70%;
     min-height: 20px;
@@ -34,9 +34,40 @@ label p span{
     margin: auto;
     border-radius: 10px;
 }
-input, select{
+.Form input, select{
     background: #990055;
     color: wheat;
     border: 2px gray ridge;
 }
-input::-webkit-input-placeholder { color: rgba(245, 222, 179, 0.53); }
+.Form input::-webkit-input-placeholder { color: rgba(245, 222, 179, 0.53); }
+
+
+.new ul,li {padding-left: 0 ;text-align: center;
+    list-style: none;
+font-size: 17px}
+.new select{
+    margin: 3%;
+    width: 20%;
+    min-width: 170px;
+    min-height: 30px;
+    font-size: 20px;
+    text-align: center;}
+form.new{
+    display: block;
+}
+input.btn{
+    width: 150px;
+    font-size: 15px;
+    margin: 3%;
+}
+.new li{
+    margin: auto;
+
+    color: #e0da10;
+    border: 1px dashed violet;
+    min-width: 150px;
+    width:20% ;
+}
+.new a {
+    text-decoration: none;
+}

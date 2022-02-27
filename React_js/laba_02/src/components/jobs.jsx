@@ -1,133 +1,218 @@
 import React from 'react';
+import {isVisible} from "@testing-library/user-event/dist/utils";
 
 const Jobs = () => {
 
     class Panel extends React.Component {
         constructor(props) {
             super( props );
-            this.state = {format: '1'};//default
-            this.handleChange = this.handleChange.bind( this );
-            this.handleSubmit = this.handleSubmit.bind( this );
+            this.state = {isVisible: true, meaning: '0', key: ''};//default
+            this.handleChangeJobs = this.handleChangeJobs.bind( this );
+            this.handleSubmitJobs = this.handleSubmitJobs.bind( this );
+            this.but = this.but.bind( this );
         }
 
-        handleChange(event) {
-            const value = event.target.value;
-            const name = event.target.name;
+        handleChangeJobs(event) {
+            const target = event.target
+            const value = target.value;
+            const name = target.name;
             this.setState( {
-                [name]: value
-            } );
+                    meaning: value,
+                    isVisible: true
+                }
+            );
         }
 
-        handleSubmit(event) {
+        handleSubmitJobs(event) {
             event.preventDefault();
         }
-
+        but(){
+            this.setState( {
+                    isVisible: false
+                }
+            );
+        }
         render() {
-            return (<div className="Form">
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        <p>
-                            <span>Выберите формат времени:</span>
-                            <select name="format" value={this.state.format} onChange={this.handleChange}>
-                                <option selected value="1">Programmer</option>
-                                <option value="2">Barber</option>
-                                <option value="3">Sales Manager</option>
-                                <option value="4">Stylist</option>
-                                <option value="5">Miner</option>
+           /* const job = {"Programmer": 0, "Miner": 1, "Auto-Mechanic": 2, "Blogger": 3, "Gardener": 4}
+            const keys = Object.keys( job )
 
-                            </select>
-                        </p>
-                    </label>
-                    <label>
-                        <p>
-                            <span> Выберите часовой пояс ((+/-)xxx):</span>
-                            <input type="text" name="UTC" required placeholder={this.state.UTC}
-                                   onChange={this.handleChange}/>
+            const getArr = job => {
+                let arr = []
+                for (let i = 0, l = keys.length; i < l; i++) {
+                    arr.push(
+                        <option
+                            key={keys[i]}
+                            name={keys[i]}// names
+                            value={job[keys[i]]}//0,1,2...
+                            onChange={this.handleChangeJobs}>
+                            {keys[i]}
+                        </option>
+                    )
 
-                        </p>
-                    </label>
+                }
+                return arr;
 
-                </form>
-                <Clock format={this.state.format} UTC={this.state.UTC}/>
-            </div>);
+            }*/
+            return (
+
+                <div className="Form">
+                    <form className="new" onSubmit={this.handleSubmitJobs}>
+                        <select name='meaning' value={this.state.meaning} onChange={this.handleChangeJobs}>
+                            <option
+
+                                // names
+                                value='0'//0,1,2...
+                                >
+                                Programmer
+                            </option>
+                            <option
+
+                                // names
+                                value='1'//0,1,2...
+                                >
+                                Miner
+                            </option>
+                            <option
+
+                                name="Auto-Mechanic"// names
+                                value='2'//0,1,2...
+                               >
+                                Auto-Mechanic
+                            </option>
+                            <option
+
+                                name="Blogger"// names
+                                value='3'//0,1,2...
+                                >
+                                Blogger
+                            </option>
+                            <option
+                                name='Gardener'// names
+                                value='4'//0,1,2...
+                                >
+                                Gardener
+                            </option>
+                        </select>
+                        <List check={this.state.isVisible} meaning={this.state.meaning}/>
+
+                    </form>
+                    <input className="btn" type="button" onClick={this.but} value="Скрыть"/>
+
+                </div>
+            );
+
         }
     }
 
-    class Clock extends React.Component {
+    class List extends React.Component {
 
-        constructor(props) {
-            super( props );
-            this.state = {date: new Date()};
-
-        }
-
-        componentDidMount() {
-            this.timerID = setInterval(
-                () => this.tick(),
-                1000
-            );
-        }
-
-        componentWillUnmount() {
-            clearInterval( this.timerID );
-        }
-
-        tick() {
-            this.setState( {
-                date: new Date()
-            } );
-        }
 
         render() {
-            let containerH = ''
-            let containerMin = '', k = 0, sign
-            let UTC = this.props.UTC
-            //цикл парсинга  пояса
-            for (let i of UTC) {
-                if (i === ":") {
-                    containerMin += UTC[k + 1] + UTC[k + 2]
-                    break
-                } else if (i === '+' || i === '-')
-                    sign = i + '1'
-                else {
-                    containerH += i
-                }
-                k++
-
-            }
-            //сколько нужно прибавить к текущей дате
-            let newUTC = +sign * (+containerMin * 60000 + +containerH * 3600 * 1000)
-            //формат имени
-            let format = parseInt( this.props.format )
-            // текущее время в UTC-0 в миллисекундах от 1 янв 1970 г
-            let time = Date.now(), clock
-            //прибавляет  пользовательский пояс и отнимает пояс устройства-текущий пояс
-            const user = time + newUTC - 3600 * 1000 * 3
-            // Устанавливаем время относительно ввода пользователя
-            this.state.date.setTime( user )
-            let check = this.state.date.getHours()
-            //проверка формата
-            if (format === 12) {
-                let hours = check > 12 ? check - 12 : check
-                this.state.date.setHours( hours )
-                clock = this.state.date.toLocaleTimeString()
-
-                let checkAmPm = check - 12
-                if (checkAmPm > 0) {
-                    console.log( this.state.date.getHours() + 12 )
-                    clock += " pm"
-                } else {
-                    clock += " am"
-                }
-            } else clock = this.state.date.toLocaleTimeString()
-
-            return (
-                <div>
-                    <h2 className="clock">
-                        Сейчас в вашем
-                        регионе: {clock}</h2>
-                </div>
-            );
+            let key = this.props.meaning
+            let check = this.props.check
+            console.log( "mean" + key )
+            let arr = [<ul>
+                <a href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                    <li>Wiki about programmer</li>
+                </a><a
+                href="https://www.receptix.us/us/virtual-data-room-due-diligence-jobs-in-united-states?as=2&g=552">
+                <li>Habr</li>
+            </a><a
+                href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjssLme2Jb2AhXaiv0HHW_nDc0QFnoECAYQAQ&url=https%3A%2F%2Fhabr.com%2Fen%2Fhub%2Fprogramming%2F&usg=AOvVaw0J490lYw2L_tz-q1HWthFA">
+                <li>About salary</li>
+            </a><a
+                href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                <li>More about work</li>
+            </a><a
+                href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjssLme2Jb2AhXaiv0HHW_nDc0QFnoECAYQAQ&url=https%3A%2F%2Fhabr.com%2Fen%2Fhub%2Fprogramming%2F&usg=AOvVaw0J490lYw2L_tz-q1HWthFA">
+                <li>About future</li>
+            </a><a
+                href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                <li>About vacation</li>
+            </a>
+            </ul>, <ul>
+                <a href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                    <li>Wiki about miner</li>
+                </a><a
+                href="https://www.receptix.us/us/virtual-data-room-due-diligence-jobs-in-united-states?as=2&g=552">
+                <li>Habr</li>
+            </a><a
+                href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjssLme2Jb2AhXaiv0HHW_nDc0QFnoECAYQAQ&url=https%3A%2F%2Fhabr.com%2Fen%2Fhub%2Fprogramming%2F&usg=AOvVaw0J490lYw2L_tz-q1HWthFA">
+                <li>About salary</li>
+            </a><a
+                href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                <li>More about work</li>
+            </a><a
+                href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjssLme2Jb2AhXaiv0HHW_nDc0QFnoECAYQAQ&url=https%3A%2F%2Fhabr.com%2Fen%2Fhub%2Fprogramming%2F&usg=AOvVaw0J490lYw2L_tz-q1HWthFA">
+                <li>About future</li>
+            </a><a
+                href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                <li>About vacation</li>
+            </a>
+            </ul>, <ul>
+                <a href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                    <li>Wiki about auto-mechanic</li>
+                </a><a
+                href="https://www.receptix.us/us/virtual-data-room-due-diligence-jobs-in-united-states?as=2&g=552">
+                <li>Habr</li>
+            </a><a
+                href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjssLme2Jb2AhXaiv0HHW_nDc0QFnoECAYQAQ&url=https%3A%2F%2Fhabr.com%2Fen%2Fhub%2Fprogramming%2F&usg=AOvVaw0J490lYw2L_tz-q1HWthFA">
+                <li>About salary</li>
+            </a><a
+                href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                <li>More about work</li>
+            </a><a
+                href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjssLme2Jb2AhXaiv0HHW_nDc0QFnoECAYQAQ&url=https%3A%2F%2Fhabr.com%2Fen%2Fhub%2Fprogramming%2F&usg=AOvVaw0J490lYw2L_tz-q1HWthFA">
+                <li>About future</li>
+            </a><a
+                href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                <li>About vacation</li>
+            </a>
+            </ul>, <ul>
+                <a href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                    <li>Wiki blogger </li>
+                </a><a
+                href="https://www.receptix.us/us/virtual-data-room-due-diligence-jobs-in-united-states?as=2&g=552">
+                <li>Habr</li>
+            </a><a
+                href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjssLme2Jb2AhXaiv0HHW_nDc0QFnoECAYQAQ&url=https%3A%2F%2Fhabr.com%2Fen%2Fhub%2Fprogramming%2F&usg=AOvVaw0J490lYw2L_tz-q1HWthFA">
+                <li>About salary</li>
+            </a><a
+                href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                <li>More about work</li>
+            </a><a
+                href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjssLme2Jb2AhXaiv0HHW_nDc0QFnoECAYQAQ&url=https%3A%2F%2Fhabr.com%2Fen%2Fhub%2Fprogramming%2F&usg=AOvVaw0J490lYw2L_tz-q1HWthFA">
+                <li>About future</li>
+            </a><a
+                href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                <li>About vacation</li>
+            </a>
+            </ul>, <ul>
+                <a href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                    <li>Wiki gardener</li>
+                </a><a
+                href="https://www.receptix.us/us/virtual-data-room-due-diligence-jobs-in-united-states?as=2&g=552">
+                <li>Habr</li>
+            </a><a
+                href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjssLme2Jb2AhXaiv0HHW_nDc0QFnoECAYQAQ&url=https%3A%2F%2Fhabr.com%2Fen%2Fhub%2Fprogramming%2F&usg=AOvVaw0J490lYw2L_tz-q1HWthFA">
+                <li>About salary</li>
+            </a><a
+                href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                <li>More about work</li>
+            </a><a
+                href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjssLme2Jb2AhXaiv0HHW_nDc0QFnoECAYQAQ&url=https%3A%2F%2Fhabr.com%2Fen%2Fhub%2Fprogramming%2F&usg=AOvVaw0J490lYw2L_tz-q1HWthFA">
+                <li>About future</li>
+            </a><a
+                href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
+                <li>About vacation</li>
+            </a>
+            </ul>]
+            console.log( check )
+            if (check === true) {
+                return (<div>
+                    {arr[key]}
+                </div>);
+            } else return null
         }
     }
 
