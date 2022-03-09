@@ -76,7 +76,7 @@ const Timer = () => {
         }
 
         render() {
-            let containerH = ''
+            let containerH = '' //+5:30
             let containerMin = '', k = 0, sign
             let UTC = this.props.UTC
             //цикл парсинга  пояса

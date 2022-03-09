@@ -1,5 +1,5 @@
 import React from 'react';
-import {isVisible} from "@testing-library/user-event/dist/utils";
+
 
 const Jobs = () => {
 
@@ -110,7 +110,6 @@ const Jobs = () => {
         render() {
             let key = this.props.meaning
             let check = this.props.check
-            console.log( "mean" + key )
             let arr = [<ul>
                 <a href="https://developers.turing.com/?s=ads_developers-google-sem_group2A&n=1&campaignid=12664957911&adid=120684975255&placement=programmers%20jobs&gclid=Cj0KCQiA09eQBhCxARIsAAYRiynS9jDF-YMwxQAS79qlmh-VI7-HpNATPfjNKAi32Ar4dXNqekxFbVwaAo1WEALw_wcB">
                     <li>Wiki about programmer</li>
@@ -207,7 +206,6 @@ const Jobs = () => {
                 <li>About vacation</li>
             </a>
             </ul>]
-            console.log( check )
             if (check === true) {
                 return (<div>
                     {arr[key]}

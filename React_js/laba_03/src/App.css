@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+}
+div{
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input, .operator{
+  border-color: mediumblue ;
+  background-color: plum;
+  color: mediumblue;
+}
+.operator{
+  margin: 0 2px;
+  border: 1px mediumblue solid;
+}
+.dinput{
+  height: 20px;
+  text-align: center;
+  background-size: 20px 15px;
+  background-repeat: no-repeat ;
+  background-position-x: 22%;
+  background-position-y: center ;
+}
+
+.lest{
+  text-align: center;
+}
+
+.lest form{
+  margin: auto;
+  width: 400px;
+}
+
+.fff{
+  border-right: none;
+  width: 20px;
+  padding: 0 0 2px;
+}
+
+.mainIn{
+  border-left: none;
+}
