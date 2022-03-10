@@ -1,5 +1,6 @@
 import './App.css';
 import PhoneInput from "./components/phoneInput";
+import SortTable from "./components/SortTable";
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
           <h1>Task 1</h1>
           <PhoneInput/>
           <h1>Task 2</h1>
-          {/*<SortTable/>*/}
+          <SortTable/>
       </div>
   );
 }

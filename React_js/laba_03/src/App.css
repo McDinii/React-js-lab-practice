@@ -22,12 +22,18 @@ input, .operator{
   border: 1px mediumblue solid;
 }
 .dinput{
+  display: block;
   height: 20px;
   text-align: center;
+  margin: auto;
   background-size: 20px 15px;
   background-repeat: no-repeat ;
   background-position-x: 22%;
   background-position-y: center ;
+}
+.dinput:hover{
+  background-color: rgba(143, 92, 143, 0.99);
+  border: #eeff00 2px groove;
 }
 
 .lest{
@@ -47,4 +53,31 @@ input, .operator{
 
 .mainIn{
   border-left: none;
+  margin-bottom: 1%;
+}
+.foodTable{
+  margin: auto;
+  border: 1px solid salmon;
+  font-size: 20px;
+  width: 550px;
+}
+.foodTable table tr{
+  width: 150px;
+  display: inline-block;
+  border: mediumblue 2px solid;
+  margin: 1px 1px;
+  box-sizing: border-box;
+}
+.main{
+  width: 150px;
+  box-sizing: border-box;
+  margin: 1px 1px;
+  text-align: center;
+
+}
+.ID{
+  width: 50px;
+  box-sizing: border-box;
+  margin: 1px 1px;
+  text-align: center;
 }
