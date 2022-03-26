@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "babel-plugin-transform-react-statements": "^0.7.3"
+    "babel-plugin-transform-react-statements": "^0.7.3",
+    "classnames": "^2.3.1"
   }
 }
