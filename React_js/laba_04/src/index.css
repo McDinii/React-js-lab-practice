@@ -16,10 +16,11 @@ button, select {
   height: 2em;
   font-size: 1rem;
   background-color: #fff;
-  color: #363636;
+  color: #c75599;
   border: 1px solid #dbdbdb;
   border-radius: 4px;
   cursor: pointer;
+  background-color: gray;
 }
 
 button:focus, select:focus {
@@ -32,8 +33,22 @@ button {
   align-items: center;
   padding: .25em .75em;
   text-align: center;
+  background-color: rgba(189, 181, 52, 0.71);
 }
 
 select {
   padding: .25em .5em;
+}
+.calendar{
+  padding: 3px;
+  background-color: rgba(199, 85, 153, 0.53);
+}
+p {
+  text-align: center;
+
+}
+p span {
+  font-weight: bold;
+
+
 }

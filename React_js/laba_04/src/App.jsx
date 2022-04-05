@@ -11,10 +11,9 @@ export default class App extends React.Component {
 
     render() {
         const { date } = this.state;
-
         return (
-            <div>
-                {date && <p>Выбранная дата: {date.toLocaleDateString()}</p>}
+            <div className="calendar">
+                {date && <p>Выбранная дата:<span> {date.toLocaleDateString()}</span></p>}
 
                 <Calendar
                     onChange={this.handleDateChange}

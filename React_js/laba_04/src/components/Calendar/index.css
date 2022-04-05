@@ -30,7 +30,7 @@
 }
 
 .calendar .day:hover {
-    background-color: #eaeaea;
+    background-color: #eeff00;
     cursor: pointer;
 }
 
@@ -49,4 +49,7 @@
 
 .calendar .day.today.selected {
     border: 2px solid lightgray;
+}
+.calendar .day.prevMonthDay{
+    color: rgba(255, 255, 0, 0.55);
 }

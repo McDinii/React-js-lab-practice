@@ -28,6 +28,11 @@ export function areEqual(a, b) {
         a.getDate() === b.getDate()
     );
 }
+export function areNOTEqual(a, b) {
+    if ( !a || !b) return false
+    return (a.getMonth() !== b.getMonth())
+    ;
+}
 
 export function isLeapYear(year) {
     return !((year % 4) || (!(year % 100) && (year % 400)));
@@ -57,14 +62,17 @@ export function getMonthData(year, month) {
     const daysInMonth = getDaysInMonth(date);
     const monthStartsOn = getDayOfWeek(date);
     let day = 1;
-
+    const prevDate = new Date(year, month -1 )
+    let daysInPrevMonth = getDaysInMonth(prevDate)
+    let days = daysInPrevMonth - monthStartsOn
     for (let i = 0; i < (daysInMonth + monthStartsOn) / DAYS_IN_WEEK; i++) {
         result[i] = [];
 
         for (let j = 0; j < DAYS_IN_WEEK; j++) {
-            if ((i === 0 && j < monthStartsOn) || day > daysInMonth) {
-                result[i][j] = undefined;
-            } else {
+            if ((i === 0 && j < monthStartsOn)) {
+                result[i][j] = new Date( year, month - 1, ++days );
+            }
+            else {
                 result[i][j] = new Date(year, month, day++);
             }
         }

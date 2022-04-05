@@ -8,7 +8,7 @@ import './index.css';
 export default class Calendar extends React.Component {
     static defaultProps = {
         date: new Date(),
-        years: [1970,2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,2021,2022],
+        years: [2004,2005,2006,2007,2008,2009,2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,2021,2022,2023],
         monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
         weekDayNames: ['Пн', 'Вт', 'Ср', 'Чт' , 'Пт', 'Сб', 'Вс'],
         onChange: Function.prototype
@@ -55,13 +55,12 @@ export default class Calendar extends React.Component {
 
     handleDayClick = date => {
         this.setState({ selectedDate: date });
-
         this.props.onChange(date);
     };
 
     render() {
         const { years, monthNames, weekDayNames } = this.props;
-        const { currentDate, selectedDate } = this.state;
+        const { currentDate, selectedDate,date } = this.state;
 
         const monthData = calendar.getMonthData(this.year, this.month);
 
@@ -105,15 +104,16 @@ export default class Calendar extends React.Component {
                     <tbody>
                     {monthData.map((week, index) =>
                         <tr key={index} className="week">
-                            {week.map((date, index) => date ?
+                            {week.map((Date, index) => Date ?
                                 <td
                                     key={index}
                                     className={classnames('day', {
-                                        'today': calendar.areEqual(date, currentDate),
-                                        'selected': calendar.areEqual(date, selectedDate)
+                                        'today': calendar.areEqual(Date, currentDate),
+                                        'selected': calendar.areEqual(Date, selectedDate),
+                                        'prevMonthDay' : calendar.areNOTEqual(Date,date)
                                     })}
-                                    onClick={() => this.handleDayClick(date)}
-                                >{date.getDate()}</td>
+                                    onClick={() => this.handleDayClick(Date)}
+                                >{Date.getDate()}</td>
                                 :
                                 <td key={index} />
                             )}
