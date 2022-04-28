@@ -6,7 +6,7 @@ const PhoneInput = () => {
             operator: ["МТС", "A1", "life:)"],
             value: "Беларусь",
             code: "+375",
-            img: "",
+            img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAABt0lEQVRIS2Ps4uevYGZjr/+aX8nGwMDAwDOpE0QxfHv18iWYQSPAysDwSpzhfzBjr6jYd0ZGJrYveeVgq+jlAJBdIEcwNrX0/wVxwo7vf8nw/z+D7Lp1YIdc5wAHCM3ADqjJCAcc2wcOcro7oE9MAhwC6Y8egx3wODiYARQSX7ZtoZnvQQbDQwDDAUFBYIvp5oDRNIAeBaDgfz93DsOL7Cw6p4EHD18yMDExvJs+jeFtZyfDnxfP6eOAFZ7+fxXPnmQQi4t/ySIlyfC2q4tBMC2d4XVTA30cAEqEqscOMmieOwXOhvwREQxi7Z0M1znpWBApnj3BoHv8MNgBgpmZDCLlFfQrCRcHhv9VO3qQQcDW9iWHri7D+xkzGAQzsxhe19fSJwpguSDtxq2XjFycDG86OxneT59Gv0SILRuCHEG3EGiaOPcZuDbctRFcB8AqI+6FrDSNAoYzEOMZ4Q7YuQEsQHcH9EtIgUMg7cFDsANgtaGG/2b6hACGA6C1Id0cMJoG+iWkLjIwMIh+rmwGxzlvO6QAKvQFJw3aAlaG54wTpKRc//9j6P1c2SxCVwewMjxnEGIIAwCfu+ioy0e8vgAAAABJRU5ErkJggg==",
             mask: "XXXX (XX) XXX-XX-XX",
             count: 13,
         },
